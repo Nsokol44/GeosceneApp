@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'navigationmenu.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,8 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,70 +41,45 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         backgroundColor: Colors.brown,
       ),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.brown,
-              ),
-              child: Text('Geoscene Navigation'),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.home,
-              ),
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.apps,
-              ),
-              title: const Text('App Development'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.science,
-              ),
-              title: const Text('Research & Designs'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.functions,
-              ),
-              title: const Text('Other Works'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.work,
-              ),
-              title: const Text('Services'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: NavigationMenu(),
       body: Center(
         child: Column(
           children: [
-            SizedBox(
+            Image.asset(
+              'images/geoscenebanner.jpg',
+              fit: BoxFit.fill,
+            ),
+            const SizedBox(
               height: 50,
+            ),
+            Card(
+              elevation: 8.0,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.album),
+                    title: Text('The Enchanted Nightingale'),
+                    subtitle:
+                        Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      TextButton(
+                        child: const Text('BUY TICKETS'),
+                        onPressed: () {/* ... */},
+                      ),
+                      const SizedBox(width: 8),
+                      TextButton(
+                        child: const Text('LISTEN'),
+                        onPressed: () {/* ... */},
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
